@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>칠순잔치 초대장</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: #1a0a10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-family: 'Noto Serif KR', serif;
+  }
+
+  .invitation {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    background: linear-gradient(175deg, #2d1420 0%, #1f0e16 40%, #261118 70%, #1a0a10 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-glow {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bg-glow::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -20%;
+    width: 140%;
+    height: 50%;
+    background: radial-gradient(ellipse, rgba(184,151,90,0.07) 0%, transparent 60%);
+  }
+  .bg-glow::after {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    right: -15%;
+    width: 80%;
+    height: 40%;
+    background: radial-gradient(ellipse, rgba(120,40,60,0.12) 0%, transparent 65%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 0 28px;
+  }
+
+  .hero {
+    padding-top: 64px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .music-icon {
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.2s;
+  }
+  .music-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(184,151,90,0.7);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title {
+    font-weight: 700;
+    font-size: 44px;
+    color: #f0e6d3;
+    letter-spacing: 14px;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-sub {
+    font-weight: 300;
+    font-size: 16px;
+    color: #b8975a;
+    letter-spacing: 6px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 36px 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards 1s;
+  }
+  .div-line {
+    width: 56px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,151,90,0.4));
+  }
+  .div-line:last-child {
+    background: linear-gradient(90deg, rgba(184,151,90,0.4), transparent);
+  }
+  .div-dot {
+    width: 4px;
+    height: 4px;
+    background: #b8975a;
+    border-radius: 50%;
+  }
+
+  .message-section {
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  .message {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(240,230,211,0.75);
+    line-height: 2.2;
+    letter-spacing: 0.3px;
+  }
+
+  .message .highlight {
+    color: #d4bc82;
+    font-weight: 500;
+  }
+
+  .no-gift {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 13px;
+    color: rgba(184,151,90,0.6);
+    letter-spacing: 3px;
+    padding: 8px 20px;
+    border: 1px solid rgba(184,151,90,0.2);
+    border-radius: 2px;
+  }
+
+  .name-section {
+    text-align: center;
+    margin: 40px 0;
+    padding: 36px 20px;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.4s;
+  }
+
+  .name-section::before {
+    content: '壽';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 160px;
+    color: rgba(184,151,90,0.04);
+    pointer-events: none;
+  }
+
+  .name-label {
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(184,151,90,0.5);
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 36px;
+    color: #f0e6d3;
+    letter-spacing: 12px;
+    margin-bottom: 10px;
+  }
+
+  .name-sub {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(240,230,211,0.5);
+    letter-spacing: 3px;
+  }
+
+  .info-section {
+    margin: 0 4px 40px;
+    padding: 28px 24px;
+    background: rgba(184,151,90,0.04);
+    border: 1px solid rgba(184,151,90,0.12);
+    border-radius: 2px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.6s;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: baseline;
+    padding: 10px 0;
+  }
+  .info-row + .info-row {
+    border-top: 1px solid rgba(184,151,90,0.06);
+  }
+
+  .info-label {
+    font-weight: 500;
+    font-size: 12px;
+    color: #b8975a;
+    letter-spacing: 4px;
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .info-value {
+    font-weight: 500;
+    font-size: 15px;
+    color: rgba(240,230,211,0.85);
+    letter-spacing: 0.3px;
+    padding-left: 16px;
+  }
+
+  .info-value.pending {
+    color: rgba(240,230,211,0.35);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 6px 14px;
+    background: rgba(184,151,90,0.08);
+    border-radius: 20px;
+    font-size: 12px;
+    color: rgba(184,151,90,0.7);
+    letter-spacing: 1px;
+  }
+  .live-badge .pulse {
+    width: 6px;
+    height: 6px;
+    background: #b8975a;
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px 0 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.8s;
+  }
+
+  .footer-orn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .footer-line {
+    width: 28px;
+    height: 1px;
+    background: rgba(184,151,90,0.2);
+  }
+  .footer-diamond {
+    width: 5px;
+    height: 5px;
+    border: 1px solid rgba(184,151,90,0.3);
+    transform: rotate(45deg);
+  }
+
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(184,151,90,0.4);
+    letter-spacing: 3px;
+  }
+
+  .footer-family {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(240,230,211,0.45);
+    letter-spacing: 3px;
+    margin-top: 14px;
+  }
+
+  .eq-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: 24px;
+    margin-top: 28px;
+  }
+  .eq-bar {
+    width: 3px;
+    background: rgba(184,151,90,0.3);
+    border-radius: 1px;
+    animation: eq 1.2s ease infinite;
+  }
+  .eq-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+  .eq-bar:nth-child(2) { height: 16px; animation-delay: 0.15s; }
+  .eq-bar:nth-child(3) { height: 10px; animation-delay: 0.3s; }
+  .eq-bar:nth-child(4) { height: 20px; animation-delay: 0.1s; }
+  .eq-bar:nth-child(5) { height: 6px; animation-delay: 0.25s; }
+  .eq-bar:nth-child(6) { height: 14px; animation-delay: 0.05s; }
+  .eq-bar:nth-child(7) { height: 10px; animation-delay: 0.2s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  @keyframes eq {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.3); }
+  }
+
+  ::-webkit-scrollbar { display: none; }
+
+  @media (min-width: 481px) {
+    body { background: #140810; }
+    .invitation {
+      min-height: auto;
+      margin: 24px auto;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(30,5,15,0.6);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="invitation">
+  <div class="bg-glow"></div>
+
+  <div class="content">
+    <div class="hero">
+      <div class="music-icon">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 8v16.5" stroke="rgba(184,151,90,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M26 6v14.5" stroke="rgba(184,151,90,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 10l12-4" stroke="rgba(184,151,90,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="10" cy="26" r="4" stroke="rgba(184,151,90,0.6)" stroke-width="1.5"/>
+          <circle cx="22" cy="22" r="4" stroke="rgba(184,151,90,0.6)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="hero-label">An Evening with Music</div>
+
+      <div class="hero-title">칠순잔치</div>
+      <div class="hero-sub">초대합니다</div>
+    </div>
+
+    <div class="divider">
+      <div class="div-line"></div>
+      <div class="div-dot"></div>
+      <div class="div-dot"></div>
+      <div class="div-dot"></div>
+      <div class="div-line"></div>
+    </div>
+
+    <div class="message-section">
+      <div class="message">
+        저희 아버님의 칠순을 맞이하여<br>
+        <span class="highlight">음악과 함께하는</span> 작은 자리를<br>
+        마련하였습니다.<br><br>
+        라이브 연주와 노래가 흐르는<br>
+        따뜻한 저녁, 함께해 주시면<br>
+        감사하겠습니다.
+      </div>
+      <div class="no-gift">선물은 정중히 사양합니다</div>
+    </div>
+
+    <div class="name-section">
+      <div class="name-label">주인공</div>
+      <div class="name">정 일 현</div>
+      <div class="name-sub">의  칠순을  맞이하여</div>
+    </div>
+
+    <div class="divider">
+      <div class="div-line"></div>
+      <div class="div-dot"></div>
+      <div class="div-line"></div>
+    </div>
+
+    <div class="info-section">
+      <div class="info-row">
+        <div class="info-label">일시</div>
+        <div class="info-value">2026년 5월 16일 토요일</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">시간</div>
+        <div class="info-value">저녁 6시 (예정)</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">장소</div>
+        <div class="info-value pending">추후 안내 예정</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">연락</div>
+        <div class="info-value">000-0000-0000</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="live-badge">
+          <div class="pulse"></div>
+          LIVE MUSIC
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-orn">
+        <div class="footer-line"></div>
+        <div class="footer-diamond"></div>
+        <div class="footer-line"></div>
+      </div>
+      <div class="footer-text">With Gratitude & Music</div>
+      <div class="footer-family">자녀 일동 올림</div>
+
+      <div class="eq-bars">
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
