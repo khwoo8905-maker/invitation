@@ -3,321 +3,382 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>정일현 칠순잔치에 초대합니다</title>
-
-<!-- 카카오톡 / SNS 미리보기 -->
+<title>칠순잔치 초대장</title>
+<meta name="description" content="칠순잔치에 초대합니다">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="칠순잔치 초대장">
 <meta property="og:title" content="칠순잔치에 초대합니다">
-<meta property="og:description" content="2026년 5월 16일(토) 낮 12시 | 울산 동창생">
-<meta property="og:url" content="https://invitation-phi-nine.vercel.app">
+<meta property="og:description" content="2026년 5월 16일 토요일 낮 12시 | 울산 동창생">
 <meta property="og:image" content="https://invitation-phi-nine.vercel.app/og-image.png">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="800">
-<meta property="og:image:height" content="400">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://invitation-phi-nine.vercel.app">
 <meta property="og:locale" content="ko_KR">
-
-<!-- 트위터/문자 미리보기 -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="칠순잔치에 초대합니다">
-<meta name="twitter:description" content="2026년 5월 16일(토) 낮 12시 | 울산 동창생">
 <meta name="twitter:image" content="https://invitation-phi-nine.vercel.app/og-image.png">
+<link rel="preload" as="image" href="https://invitation-phi-nine.vercel.app/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+  :root {
+    --deep: #1c1a17;
+    --warm-cream: #f5f0e8;
+    --gold: #b8975a;
+    --gold-light: #d4bc82;
+    --gold-faint: #e8dcc4;
+    --text-main: #2c2824;
+    --text-soft: #6e665c;
+    --text-faint: #9e9589;
+    --bg: #faf7f2;
+    --bg-card: #fffdf9;
+  }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background: #1a0a10;
+    background: var(--deep);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    padding: 16px;
     font-family: 'Noto Serif KR', serif;
   }
 
   .invitation {
     width: 100%;
-    max-width: 480px;
-    min-height: 100vh;
-    background: linear-gradient(175deg, #2d1420 0%, #1f0e16 40%, #261118 70%, #1a0a10 100%);
-    position: relative;
+    max-width: 420px;
+    background: var(--bg-card);
+    border-radius: 2px;
     overflow: hidden;
-  }
-
-  .bg-glow {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .bg-glow::before {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: -20%;
-    width: 140%;
-    height: 50%;
-    background: radial-gradient(ellipse, rgba(184,151,90,0.07) 0%, transparent 60%);
-  }
-  .bg-glow::after {
-    content: '';
-    position: absolute;
-    bottom: 5%;
-    right: -15%;
-    width: 80%;
-    height: 40%;
-    background: radial-gradient(ellipse, rgba(120,40,60,0.12) 0%, transparent 65%);
-  }
-
-  .content {
     position: relative;
-    z-index: 1;
-    padding: 0 28px;
+    box-shadow:
+      0 1px 3px rgba(0,0,0,0.08),
+      0 8px 40px rgba(0,0,0,0.12);
   }
 
-  .hero {
-    padding-top: 64px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .music-icon {
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards 0.2s;
-  }
-  .music-icon svg {
-    width: 36px;
-    height: 36px;
-  }
-
-  .hero-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 13px;
-    color: rgba(184,151,90,0.7);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title {
-    font-weight: 700;
-    font-size: 44px;
-    color: #f0e6d3;
-    letter-spacing: 14px;
-    margin-bottom: 16px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-sub {
-    font-weight: 300;
-    font-size: 16px;
-    color: #b8975a;
-    letter-spacing: 6px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .divider {
+  /* ── 음악 버튼 ── */
+  .music-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    margin: 36px 0;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards 1s;
+    box-shadow: 0 4px 16px rgba(184,151,90,0.4);
+    z-index: 100;
+    transition: transform 0.3s ease, background 0.3s ease;
   }
-  .div-line {
-    width: 56px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(184,151,90,0.4));
+  .music-btn:hover {
+    transform: scale(1.1);
+    background: var(--gold-light);
   }
-  .div-line:last-child {
-    background: linear-gradient(90deg, rgba(184,151,90,0.4), transparent);
+  .music-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: #fff;
   }
-  .div-dot {
-    width: 4px;
-    height: 4px;
-    background: #b8975a;
-    border-radius: 50%;
+  .music-btn.playing {
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(184,151,90,0.4); }
+    50% { box-shadow: 0 4px 24px rgba(184,151,90,0.7); }
   }
 
-  .message-section {
+  /* ── 상단 히어로 ── */
+  .hero {
+    position: relative;
+    padding: 56px 32px 40px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(184,151,90,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(184,151,90,0.04) 0%, transparent 50%),
+      var(--bg-card);
     text-align: center;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1.2s;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 220px;
+    color: rgba(184,151,90,0.04);
+    pointer-events: none;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .top-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .ornament-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .orn-line {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light));
+  }
+  .orn-line:last-child {
+    background: linear-gradient(90deg, var(--gold-light), transparent);
+  }
+  .orn-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .main-title {
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--text-main);
+    letter-spacing: 12px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .sub-title {
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 8px;
+  }
+
+  /* ── 본문 ── */
+  .body-section {
+    padding: 0 32px;
+    text-align: center;
+  }
+
+  .divider-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 32px;
+  }
+  .divider-line {
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--gold-faint);
+  }
+  .divider-char {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 200;
+    font-size: 20px;
+    color: var(--gold);
+    padding: 0 16px;
   }
 
   .message {
     font-weight: 400;
-    font-size: 16px;
-    color: rgba(240,230,211,0.75);
-    line-height: 2.2;
-    letter-spacing: 0.3px;
-  }
-
-  .message .highlight {
-    color: #d4bc82;
-    font-weight: 500;
-  }
-
-  .no-gift {
-    display: inline-block;
-    margin-top: 28px;
-    font-weight: 500;
     font-size: 15px;
-    color: #b8975a;
-    letter-spacing: 4px;
-    padding: 14px 28px;
-    border: 1.5px solid rgba(184,151,90,0.5);
+    color: var(--text-main);
+    line-height: 2.1;
+    letter-spacing: 0.2px;
+    padding: 0 8px;
+  }
+
+  /* ── 이름 카드 ── */
+  .name-card {
+    margin: 32px 32px 0;
+    padding: 28px 20px;
+    background:
+      linear-gradient(135deg, rgba(184,151,90,0.05), transparent 60%),
+      linear-gradient(315deg, rgba(184,151,90,0.03), transparent 40%);
+    border: 1px solid rgba(184,151,90,0.15);
     border-radius: 2px;
-    background: rgba(184,151,90,0.08);
-    text-shadow: 0 0 12px rgba(184,151,90,0.2);
-  }
-
-  .name-section {
     text-align: center;
-    margin: 40px 0;
-    padding: 36px 20px;
     position: relative;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1.4s;
   }
 
-  .name-section::before {
-    content: '壽';
+  .name-card::before,
+  .name-card::after {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Noto Serif KR', serif;
-    font-weight: 900;
-    font-size: 160px;
-    color: rgba(184,151,90,0.04);
-    pointer-events: none;
+    width: 12px;
+    height: 12px;
+    border-color: var(--gold-light);
+    border-style: solid;
+  }
+  .name-card::before {
+    top: -1px; left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .name-card::after {
+    bottom: -1px; right: -1px;
+    border-width: 0 1px 1px 0;
   }
 
-  .name-label {
+  .name-pre {
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  .name-main {
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--text-main);
+    letter-spacing: 10px;
+    margin-bottom: 8px;
+  }
+
+  .name-suffix {
     font-weight: 300;
     font-size: 13px;
-    color: rgba(184,151,90,0.5);
+    color: var(--text-soft);
     letter-spacing: 4px;
-    margin-bottom: 14px;
   }
 
-  .name {
-    font-weight: 700;
-    font-size: 36px;
-    color: #f0e6d3;
-    letter-spacing: 12px;
-    margin-bottom: 10px;
-  }
-
-  .name-sub {
-    font-weight: 400;
-    font-size: 15px;
-    color: rgba(240,230,211,0.5);
-    letter-spacing: 3px;
-  }
-
+  /* ── 정보 섹션 ── */
   .info-section {
-    margin: 0 4px 40px;
-    padding: 28px 24px;
-    background: rgba(184,151,90,0.04);
-    border: 1px solid rgba(184,151,90,0.12);
-    border-radius: 2px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1.6s;
+    margin: 28px 32px 0;
   }
 
   .info-row {
     display: flex;
     align-items: baseline;
-    padding: 10px 0;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(184,151,90,0.08);
   }
-  .info-row + .info-row {
-    border-top: 1px solid rgba(184,151,90,0.06);
+  .info-row:last-child {
+    border-bottom: none;
   }
 
   .info-label {
     font-weight: 500;
-    font-size: 12px;
-    color: #b8975a;
+    font-size: 11px;
+    color: var(--gold);
     letter-spacing: 4px;
     width: 56px;
     flex-shrink: 0;
   }
 
   .info-value {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-main);
+    letter-spacing: 0.3px;
+    padding-left: 12px;
+  }
+
+  .info-value small {
+    display: block;
+    font-size: 12px;
+    color: var(--text-soft);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  /* ── 지도 ── */
+  .map-section {
+    margin: 24px 32px 0;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(184,151,90,0.15);
+  }
+  .map-section iframe {
+    width: 100%;
+    height: 220px;
+    border: 0;
+    display: block;
+  }
+  .map-link {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 1px;
+    background: rgba(184,151,90,0.04);
+    border-top: 1px solid rgba(184,151,90,0.1);
+    transition: background 0.2s;
+  }
+  .map-link:hover {
+    background: rgba(184,151,90,0.1);
+  }
+
+  /* ── 안내 문구 ── */
+  .notice {
+    margin: 28px 32px 0;
+    padding: 14px 28px;
+    text-align: center;
     font-weight: 500;
     font-size: 15px;
-    color: rgba(240,230,211,0.85);
-    letter-spacing: 0.3px;
-    padding-left: 16px;
-  }
-
-  .info-value.pending {
-    color: rgba(240,230,211,0.35);
-    font-weight: 300;
-    font-style: italic;
-  }
-
-  .live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 16px;
-    padding: 6px 14px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    border: 1.5px solid rgba(184,151,90,0.5);
+    border-radius: 2px;
     background: rgba(184,151,90,0.08);
-    border-radius: 20px;
-    font-size: 12px;
-    color: rgba(184,151,90,0.7);
-    letter-spacing: 1px;
-  }
-  .live-badge .pulse {
-    width: 6px;
-    height: 6px;
-    background: #b8975a;
-    border-radius: 50%;
-    animation: pulse 2s ease infinite;
+    text-shadow: 0 0 12px rgba(184,151,90,0.2);
   }
 
+  /* ── 하단 마무리 ── */
   .footer {
+    padding: 36px 32px 44px;
     text-align: center;
-    padding: 20px 0 56px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1.8s;
   }
 
-  .footer-orn {
+  .footer-ornament {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 10px;
+    margin-bottom: 20px;
   }
   .footer-line {
-    width: 28px;
+    width: 32px;
     height: 1px;
-    background: rgba(184,151,90,0.2);
+    background: var(--gold-faint);
   }
   .footer-diamond {
     width: 5px;
     height: 5px;
-    border: 1px solid rgba(184,151,90,0.3);
+    border: 1px solid var(--gold-light);
     transform: rotate(45deg);
   }
 
@@ -325,176 +386,176 @@
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 13px;
-    color: rgba(184,151,90,0.4);
-    letter-spacing: 3px;
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 2px;
   }
 
   .footer-family {
-    font-weight: 400;
-    font-size: 14px;
-    color: rgba(240,230,211,0.45);
-    letter-spacing: 3px;
-    margin-top: 14px;
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--text-soft);
+    letter-spacing: 2px;
+    margin-top: 16px;
   }
 
-  .eq-bars {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 3px;
-    height: 24px;
-    margin-top: 28px;
-  }
-  .eq-bar {
-    width: 3px;
-    background: rgba(184,151,90,0.3);
-    border-radius: 1px;
-    animation: eq 1.2s ease infinite;
-  }
-  .eq-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
-  .eq-bar:nth-child(2) { height: 16px; animation-delay: 0.15s; }
-  .eq-bar:nth-child(3) { height: 10px; animation-delay: 0.3s; }
-  .eq-bar:nth-child(4) { height: 20px; animation-delay: 0.1s; }
-  .eq-bar:nth-child(5) { height: 6px; animation-delay: 0.25s; }
-  .eq-bar:nth-child(6) { height: 14px; animation-delay: 0.05s; }
-  .eq-bar:nth-child(7) { height: 10px; animation-delay: 0.2s; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-  @keyframes eq {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.3); }
-  }
-
+  /* ── 스크롤바 숨김 ── */
   ::-webkit-scrollbar { display: none; }
-
-  @media (min-width: 481px) {
-    body { background: #140810; }
-    .invitation {
-      min-height: auto;
-      margin: 24px auto;
-      border-radius: 4px;
-      box-shadow: 0 20px 60px rgba(30,5,15,0.6);
-    }
-  }
 </style>
 </head>
 <body>
 
 <div class="invitation">
-  <div class="bg-glow"></div>
-
-  <div class="content">
-    <div class="hero">
-      <div class="music-icon">
-        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 8v16.5" stroke="rgba(184,151,90,0.6)" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M26 6v14.5" stroke="rgba(184,151,90,0.6)" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M14 10l12-4" stroke="rgba(184,151,90,0.6)" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="10" cy="26" r="4" stroke="rgba(184,151,90,0.6)" stroke-width="1.5"/>
-          <circle cx="22" cy="22" r="4" stroke="rgba(184,151,90,0.6)" stroke-width="1.5"/>
-        </svg>
-      </div>
-
-      <div class="hero-label">An Evening with Music</div>
-
-      <div class="hero-title">칠순잔치</div>
-      <div class="hero-sub">초대합니다</div>
+  <!-- 히어로 -->
+  <div class="hero">
+    <div class="watermark">壽</div>
+    <div class="top-label">Invitation</div>
+    <div class="ornament-top">
+      <div class="orn-line"></div>
+      <div class="orn-diamond"></div>
+      <div class="orn-line"></div>
     </div>
+    <div class="main-title">칠순잔치</div>
+    <div class="sub-title">초대합니다</div>
+  </div>
 
-    <div class="divider">
-      <div class="div-line"></div>
-      <div class="div-dot"></div>
-      <div class="div-dot"></div>
-      <div class="div-dot"></div>
-      <div class="div-line"></div>
-    </div>
+  <!-- 구분 -->
+  <div class="divider-section">
+    <div class="divider-line"></div>
+    <div class="divider-char">壽</div>
+    <div class="divider-line"></div>
+  </div>
 
-    <div class="message-section">
-      <div class="message">
-        저희 아버님의 칠순을 맞이하여<br>
-        <span class="highlight">음악과 함께하는</span> 작은 자리를<br>
-        마련하였습니다.<br><br>
-        라이브 연주와 노래가 흐르는<br>
-        따뜻한 저녁, 함께해 주시면<br>
-        감사하겠습니다.
-      </div>
-      <div class="no-gift">선물은 정중히 사양합니다</div>
-    </div>
-
-    <div class="name-section">
-      <div class="name-label">주인공</div>
-      <div class="name">정 일 현</div>
-      <div class="name-sub">의  칠순을  맞이하여</div>
-    </div>
-
-    <div class="divider">
-      <div class="div-line"></div>
-      <div class="div-dot"></div>
-      <div class="div-line"></div>
-    </div>
-
-    <div class="info-section">
-      <div class="info-row">
-        <div class="info-label">일시</div>
-        <div class="info-value">2026년 5월 16일 토요일</div>
-      </div>
-      <div class="info-row">
-        <div class="info-label">시간</div>
-        <div class="info-value">낮 12시 30분</div>
-      </div>
-      <div class="info-row">
-        <div class="info-label">장소</div>
-        <div class="info-value">동창생<br><small style="font-size:12px;color:rgba(240,230,211,0.45);font-weight:300;">울산광역시 남구 중앙로 187 2층</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-label">주차</div>
-        <div class="info-value">울산시청 주차장 이용</div>
-      </div>
-      <div class="info-row">
-        <div class="info-label">연락</div>
-        <div class="info-value">정선화 010-9305-8730<br>추용선 010-2334-8577</div>
-      </div>
-      <div style="text-align:center;">
-        <div class="live-badge">
-          <div class="pulse"></div>
-          LIVE MUSIC
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="footer-orn">
-        <div class="footer-line"></div>
-        <div class="footer-diamond"></div>
-        <div class="footer-line"></div>
-      </div>
-      <div class="footer-text">With Gratitude & Music</div>
-      <div class="footer-family">자녀 일동 올림</div>
-
-      <div class="eq-bars">
-        <div class="eq-bar"></div>
-        <div class="eq-bar"></div>
-        <div class="eq-bar"></div>
-        <div class="eq-bar"></div>
-        <div class="eq-bar"></div>
-        <div class="eq-bar"></div>
-        <div class="eq-bar"></div>
-      </div>
+  <!-- 본문 -->
+  <div class="body-section">
+    <div class="message">
+      저희 아버님의 칠순을 맞이하여<br>
+      감사의 마음을 담아<br>
+      작은 자리를 마련하였습니다.<br><br>
+      바쁘시더라도 귀한 걸음 하시어<br>
+      자리를 빛내 주시면 감사하겠습니다.
     </div>
   </div>
+
+  <!-- 이름 카드 -->
+  <div class="name-card">
+    <div class="name-pre">주인공</div>
+    <div class="name-main">정 일 현</div>
+    <div class="name-suffix">의  칠순을  맞이하여</div>
+  </div>
+
+  <!-- 정보 -->
+  <div class="info-section">
+    <div class="info-row">
+      <div class="info-label">일시</div>
+      <div class="info-value">2026년 5월 16일 토요일</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">시간</div>
+      <div class="info-value">낮 12시 30분</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">장소</div>
+      <div class="info-value">
+        동창생
+        <small>울산광역시 남구 중앙로 187 2층</small>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">주차</div>
+      <div class="info-value">울산시청 주차장 이용</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">연락</div>
+      <div class="info-value">정선화 010-9305-8730<br>추용선 010-2334-8577</div>
+    </div>
+  </div>
+
+  <!-- 지도 -->
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps?q=울산광역시+남구+중앙로+187&output=embed"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <a class="map-link" href="https://map.naver.com/p/search/울산광역시 남구 중앙로 187" target="_blank" rel="noopener">
+      네이버 지도에서 길찾기 →
+    </a>
+  </div>
+
+  <!-- 선물 사양 안내 -->
+  <div class="notice">
+    선물은 정중히 사양합니다
+  </div>
+
+  <!-- 하단 -->
+  <div class="footer">
+    <div class="footer-ornament">
+      <div class="footer-line"></div>
+      <div class="footer-diamond"></div>
+      <div class="footer-line"></div>
+    </div>
+    <div class="footer-text">With Gratitude</div>
+    <div class="footer-family">자녀 일동 올림</div>
+  </div>
 </div>
+
+<!-- 음악 버튼 -->
+<button class="music-btn" id="musicBtn" aria-label="음악 재생/정지">
+  <svg id="iconPlay" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 5v14l11-7z"/>
+  </svg>
+  <svg id="iconPause" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+  </svg>
+</button>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://archive.org/download/saxophone-jazz-collection/HMV%20Jazz%20-%20The%20Saxophone%20Jazz%20Collection/03%20Someone%20To%20Watch%20Over%20Me.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const btn = document.getElementById('musicBtn');
+  const audio = document.getElementById('bgMusic');
+  const iconPlay = document.getElementById('iconPlay');
+  const iconPause = document.getElementById('iconPause');
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      audio.pause();
+      btn.classList.remove('playing');
+      iconPlay.style.display = '';
+      iconPause.style.display = 'none';
+    } else {
+      audio.play().then(() => {
+        btn.classList.add('playing');
+        iconPlay.style.display = 'none';
+        iconPause.style.display = '';
+      }).catch(() => {});
+    }
+    isPlaying = !isPlaying;
+  }
+
+  btn.addEventListener('click', toggleMusic);
+
+  // 첫 터치/클릭 시 자동 재생 시도
+  function autoPlay() {
+    if (!isPlaying) {
+      audio.play().then(() => {
+        isPlaying = true;
+        btn.classList.add('playing');
+        iconPlay.style.display = 'none';
+        iconPause.style.display = '';
+      }).catch(() => {});
+    }
+    document.removeEventListener('click', autoPlay);
+    document.removeEventListener('touchstart', autoPlay);
+  }
+  document.addEventListener('click', autoPlay);
+  document.addEventListener('touchstart', autoPlay);
+</script>
 
 </body>
 </html>
